@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserAuthConroller;
@@ -60,6 +61,14 @@ Route::prefix('/cms/product/')->middleware('auth:admin')->group(function () {
     Route::resource('comments' , CommentController::class);
     Route::post('update-comments/{id}' , [CommentController::class , 'update'])->name('update-comments');
 
-
+    Route::resource('companies' , CompanyController::class);
+    Route::post('update-companies/{id}' , [CommentController::class , 'update'])->name('update-companies');
 });
+Route::get('home' , [HomeController::class , 'home'])->name('news.parent');
 
+
+Route::prefix('cms/regester')->group(function () {
+    Route::post('regesterr' , [AdminController::class , 'regester'])->name('Admin.regester');
+    Route::get('showregesterr' , [AdminController::class , 'showregester'])->name('Admin.showregester');
+
+ });

@@ -15,8 +15,9 @@ class ContactController extends Controller
 
     public function index()
     {
-   $contacts=Contact::orderBy('id','desc')->paginate(5);
+        $contacts=Contact::orderBy('id','desc')->paginate(5);
     return response()->view('cms.contacts.index',compact('contacts'));
+
     }
 
     /**
@@ -27,7 +28,8 @@ class ContactController extends Controller
     public function create()
     {
         $contacts=Contact::all();
-        return response()->view('cms.contacts.create', compact('contacts'));
+        return response()->view('contacts.create', compact('contacts'));
+
     }
 
     /**
@@ -76,8 +78,7 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        $contacts = Contact::findOrFail($id);
-        return response()->view('cms.contacts.edit' , compact('contacts'));
+
     }
 
     /**
@@ -89,30 +90,13 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator($request->all() , [
-            'massege' => 'required|string',
-        ]);
 
-        if (! $validator->fails()){
-
-            $contacts = Contact::findOrFail($id);
-            $contacts->name = $request->get('name');
-            $contacts->massege = $request->get('massege');
-            $isUpdated = $contacts->save();
-            return ['redirect' => route('contacts.index')];
-            if($isUpdated){
-                return response()->json(['icon' => 'success' , 'title' => 'Updated is Successfully'] , 200);
-            }
-            else{
-                return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] , 400);
-
-            }
         }
 
 
 
 
-    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -121,5 +105,6 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        $contacts = Contact::destroy($id);    }
+
+    }
 }

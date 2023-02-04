@@ -1,0 +1,22 @@
+ laravel new l2
+
+ php artisan serve
+
+  php artisan migrate
+   php artisan migrate:fresh
+
+   php artisan make:model Comment
+    php artisan make:migration Create_comments_table
+ php artisan make:controller Storecontroller -r
+
+composer update
+php artisan key:generate
+
+php artisan make:controller CommentController
+
+  php artisan migrate:rollback
+
+ php artisan make:migration add-tophone_Cours_table
+
+php artisan migrate:rollback step=2
+php artisan migrate:status

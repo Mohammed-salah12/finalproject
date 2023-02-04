@@ -2,9 +2,9 @@
 
 @section('title' , ' Admin')
 
-@section('main-title' , 'Index Admin')
+@section('main-title' , 'Index Comment')
 
-@section('sub-title' , 'index Admin')
+@section('sub-title' , 'index Comment')
 
 @section('styles')
 
@@ -21,7 +21,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                {{-- <h3 class="card-title"> Index Data of Admin</h3> --}}
+                {{-- <h3 class="card-title"> Index Data of ddd</h3> --}}
 
 
                 <div class="card-tools">

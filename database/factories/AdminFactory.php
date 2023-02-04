@@ -14,7 +14,8 @@ class AdminFactory extends Factory
     public function definition()
     {
         return [
-            'email' => $this->faker->unique()->safeEmail(),
+            'email' => $this->faker->unique()->email(),
+            // 'password' =>  $this->faker->password)
             'password' => '12345', // password
 
 

@@ -1,10 +1,10 @@
  @extends('cms.parent')
 
-@section('title' , 'Admin')
+@section('title' , 'Comment')
 
-@section('main-title' , 'Create Admin')
+@section('main-title' , 'Create Comment')
 
-@section('sub-title' , 'create Admin')
+@section('sub-title' , 'create Comment')
 
 @section('styles')
 

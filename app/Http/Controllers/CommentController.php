@@ -27,7 +27,7 @@ class CommentController extends Controller
      public function create()
      {
         $comments=Comment::all();
-        return response()->view('cms.Comments.create', compact('comments'));
+        return response()->view('Comments.create', compact('comments'));
      }
 
      /**
@@ -106,42 +106,42 @@ class CommentController extends Controller
       */
      public function update(Request $request, $id)
      {
-        $validator = Validator($request->all(), [
-            'name' => 'string',
+        // $validator = Validator($request->all(), [
+        //     'name' => 'string',
 
-        ]);
+        // ]);
 
-            if (! $validator->fails()){
+        //     if (! $validator->fails()){
 
-                $comments = Comment::findOrFail($id);
-                $comments->name = $request->get('name');
-                $comments->comment = $request->get('comment');
-                if (request()->hasFile('img')) {
+        //         $comments = Comment::findOrFail($id);
+        //         $comments->name = $request->get('name');
+        //         $comments->comment = $request->get('comment');
+        //         if (request()->hasFile('img')) {
 
-                    $img = $request ->file('img');
+        //             $img = $request ->file('img');
 
-                    $imgName = time() . 'img.' . $img->getClientOriginalExtension();
+        //             $imgName = time() . 'img.' . $img->getClientOriginalExtension();
 
-                    $img->move('storage/images/Comment', $imgName);
+        //             $img->move('storage/images/Comment', $imgName);
 
-                    $comments->img = $imgName;
-                }
-                $isUpdated = $comments->save();
+        //             $comments->img = $imgName;
+        //         }
+        //         $isUpdated = $comments->save();
 
-                return ['redirect' => route('comments.index')];
-                if($isUpdated){
+        //         return ['redirect' => route('comments.index')];
+        //         if($isUpdated){
 
-                    return response()->json(['icon' => 'success' , 'title' => "Created is Successfully"] , 200);
-                }
-                else{
-                    return response()->json(['icon' => 'error' , 'title' => "Created is Failed"] , 400);
-                }
-            }
+        //             return response()->json(['icon' => 'success' , 'title' => "Created is Successfully"] , 200);
+        //         }
+        //         else{
+        //             return response()->json(['icon' => 'error' , 'title' => "Created is Failed"] , 400);
+        //         }
+        //     }
 
-            }
+        //     }
 
 
-
+        }
 
 
 
@@ -153,6 +153,6 @@ class CommentController extends Controller
       */
      public function destroy($id)
      {
-        $comments = Comment::destroy($id);
+        // $comments = Comment::destroy($id);
       }
 }

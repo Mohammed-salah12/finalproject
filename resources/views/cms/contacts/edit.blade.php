@@ -2,11 +2,11 @@
 
 @extends('cms.parent')
 
-@section('title' , 'outhers')
+@section('title' , 'contact')
 
-@section('main-title' , 'Create outhers')
+@section('main-title' , 'Create contact')
 
-@section('sub-title' , 'create outhers')
+@section('sub-title' , 'create contact')
 
 @section('styles')
 

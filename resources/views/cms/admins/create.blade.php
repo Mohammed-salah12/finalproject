@@ -111,7 +111,7 @@
       formData.append('img',document.getElementById('img').files[0]);
 
 
-      store('/cms/product/admins' , formData);
+      store('/cms/product/admin' , formData);
     }
 
   </script>

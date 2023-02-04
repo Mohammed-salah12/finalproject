@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use App\Models\City;
 use App\Models\User;
+use Illuminate\Foundation\Auth\User as AuthUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -18,7 +19,7 @@ class AdminController extends Controller
     public function index()
     {
    $admins=Admin::orderBy('id','desc')->paginate(5);
-   return response()->view('cms.admin.index',compact('admins'));    }
+   return response()->view('cms.admins.index',compact('admins'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +29,7 @@ class AdminController extends Controller
     public function create()
     {
         $admins=Admin::all();
-        return response()->view('cms.admin.create',compact('admins'));
+        return response()->view('cms.admins.create',compact('admins'));
     }
 
     /**
@@ -44,6 +45,8 @@ class AdminController extends Controller
    ]));
    if(! $valedetor->fails() ){
     $admins= new Admin();
+    $admins->email=$request->get('email');
+    $admins->password=Hash::make($request->get('password'));
     if (request()->hasFile('img')) {
 
         $img = $request ->file('img');
@@ -54,8 +57,7 @@ class AdminController extends Controller
 
         $admins->img = $imgName;
     }
-    $admins->email=$request->get('email');
-    $admins->password=Hash::make($request->get('password'));
+
     $IsSaved=$admins->save();
     if($IsSaved){
         $users=new User();
@@ -65,10 +67,20 @@ class AdminController extends Controller
         $users->actor()->associate($admins);
 
         $IsSavedUser=$users->save();
-        return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
-    }
-   }
 
+
+        if($IsSavedUser){
+
+        return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
+    }else{
+
+
+        return response()->json(['icon'=>'error','title'=>'created is error'], 400);
+
+    }
+
+   }
+   }
 
     }
 
@@ -92,7 +104,7 @@ class AdminController extends Controller
     public function edit($id)
     {
       $admins=Admin::findOrFail($id);
-      return response()->view('cms.admin.edit',compact('admins'));
+      return response()->view('cms.admins.edit',compact('admins'));
     }
 
     /**

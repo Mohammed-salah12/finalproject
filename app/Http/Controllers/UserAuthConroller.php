@@ -39,7 +39,7 @@ class UserAuthConroller extends Controller
 
     }
        public function logout(Request $request){
-        $guard = auth('admin')->check() ? 'admin' : "web";
+        $guard = auth('admins')->check() ? 'admins' : "web";
         Auth::guard($guard)->logout();
         $request->session()->invalidate();
         return redirect()->route('view.login' , $guard);

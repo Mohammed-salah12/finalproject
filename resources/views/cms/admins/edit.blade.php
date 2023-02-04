@@ -26,20 +26,9 @@
             <form>
 
               <div class="card-body">
-              <div class="row">
 
-                <div class="form-group col-md-6">
-                  <label for="first_name">First Name of Admin</label>
-                  <input type="text" class="form-control" id="first_name" name="first_name"
-                  value="{{$admins->user->first_name ?? ""}}" placeholder="Enter First Name of Admin">
-                </div>
 
-                <div class="form-group col-md-6">
-                  <label for="last_name">Last Name of Admin</label>
-                  <input type="text" class="form-control" id="last_name" name="last_name"
-                  value="{{$admins->user->last_name ?? ""}}" placeholder="Enter Last Name of Admin">
-                </div>
-              </div>
+
 
                  <div class="row">
 
@@ -57,11 +46,7 @@
 
             <div class="row">
 
-                <div class="form-group col-md-6">
-                  <label for="mobile">Mobile of Admin</label>
-                  <input type="text" class="form-control" id="mobile" name="mobile"
-                  value="{{ $admins->user->mobile ?? "" }}" placeholder="Mobile of Admin">
-                </div>
+
 
 
 
@@ -108,11 +93,8 @@
     function performUpdate(id){
 
       let formData = new FormData();
-      formData.append('first_name',document.getElementById('first_name').value);
-      formData.append('last_name',document.getElementById('last_name').value);
       formData.append('email',document.getElementById('email').value);
-      formData.append('mobile',document.getElementById('mobile').value);
-      formData.append('img',document.getElementById('img').files[0]);
+
 
       storeRoute('/cms/product/update-admins/'+id , formData);
     }

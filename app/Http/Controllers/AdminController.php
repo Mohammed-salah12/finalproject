@@ -47,23 +47,11 @@ class AdminController extends Controller
     $admins= new Admin();
     $admins->email=$request->get('email');
     $admins->password=Hash::make($request->get('password'));
-    if (request()->hasFile('img')) {
-
-        $img = $request ->file('img');
-
-        $imgName = time() . 'img.' . $img->getClientOriginalExtension();
-
-        $img->move('storage/images/admin', $imgName);
-
-        $admins->img = $imgName;
-    }
 
     $IsSaved=$admins->save();
     if($IsSaved){
 
-<<<<<<< HEAD
-        $IsSavedUser=$users->save();
-=======
+        $IsSaved=$admins->save();
         return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
 
     }
@@ -72,23 +60,11 @@ class AdminController extends Controller
 
     }
    }
->>>>>>> e1db42da570904ab75d95ef21767d96c47a68e37
-
-
-        if($IsSavedUser){
-
-        return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
-    }else{
-
-
-        return response()->json(['icon'=>'error','title'=>'created is error'], 400);
-
-    }
 
    }
-   }
 
-    }
+
+
 
     /**
      * Display the specified resource.

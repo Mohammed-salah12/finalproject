@@ -34,30 +34,17 @@
 
                  <div class="row">
 
-                <div class="form-group col-md-6">
-                  <label for="email">Email of Admin</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email of Admin">
+                  <div class="form-group col-md-12">
+                  <label for="logo">logo</label>
+                  <input type="file" class="form-control" id="logo" name="logo" placeholder="Enter Date of Admin">
                 </div>
-
-                <div class="form-group col-md-6">
-                  <label for="password"> password of Admin</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Enter password of Admin">
-                </div>
-              </div>
-
-            <div class="row">
-
-
-
-
-                 <div class="row">
-
+                 </div>
 
               <!-- /.card-body -->
 
               <div class="card-footer">
                 <button type="button" onclick="performStore()" class="btn btn-primary">Store</button>
-                <a href="{{ route('admins.index') }}" type="button" class="btn btn-info">Return Back</a>
+                <a href="{{ route('companies.index') }}" type="button" class="btn btn-info">Return Back</a>
 
               </div>
             </form>
@@ -83,12 +70,10 @@
     function performStore(){
 
       let formData = new FormData();
-
-      formData.append('email',document.getElementById('email').value);
-      formData.append('password',document.getElementById('password').value);
+      formData.append('logo',document.getElementById('logo').files[0]);
 
 
-      store('/cms/product/admin' , formData);
+      store('/cms/product/companies' , formData);
     }
 
   </script>

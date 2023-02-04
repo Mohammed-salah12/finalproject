@@ -95,7 +95,7 @@
       formData.append('name',document.getElementById('name').value);
       formData.append('comment',document.getElementById('comment').value);
       formData.append('img',document.getElementById('img').files[0]);
-      storeRoute('/cms/product/update-comments/'+id ,formData);
+      storeRoute('/cms/product/update-companies/'+id ,formData);
     }
 
   </script>

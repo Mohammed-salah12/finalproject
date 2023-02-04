@@ -40,7 +40,7 @@
             <div class="card">
               <div class="card-header">
                 {{-- <h3 class="card-title"> Index Data of Admin</h3> --}}
-                <a href="{{ route('admins.create') }}" type="button" class="btn btn-info">Add New Admin</a>
+                <a href="{{ route('companies.create') }}" type="button" class="btn btn-info">Add New company</a>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -60,26 +60,23 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Email</th>
-                      <th>img</th>
-                    <th>Seeting</th>
+                      <th>logo</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($admins as $admin)
+                    @foreach ($companies as $company)
                     <tr>
-                        <td>{{$admin->id}}</td>
-                        <td>{{$admin->email ?? ""}}</td>
+                        <td>{{$company->id}}</td>
+
                         <td>
-                            <img class="img-circle img-bordered-sm" src="{{asset('storage/images/admin/'.$admin->img ?? "")}}" width="60" height="60" alt="User img">
+                            <img class="img-circle img-bordered-sm" src="{{asset('storage/images/company/'.$company->logo ?? "")}}" width="60" height="60" alt="User img">
                          </td>
-                        <td>
                             <div class="btn group">
-                              <a href="{{route('admins.edit' , $admin->id)}}" type="button" class="btn btn-info">
+                              <a href="{{route('companies.edit' , $company->id)}}" type="button" class="btn btn-info">
                                 <i class="fas fa-edit"></i>
                                 {{-- <i class="far fa-edit"></i> --}}
                               </a>
-                              <a href="#" type="button" onclick="performDestroy({{ $admin->id }} , this)" class="btn btn-danger">
+                              <a href="#" type="button" onclick="performDestroy({{ $company->id }} , this)" class="btn btn-danger">
                                 <i class="fas fa-trash-alt"></i>
                               </a>
 
@@ -97,7 +94,7 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            {{ $admins->links()}}
+            {{ $companies->links()}}
           </div>
         </div>
 
@@ -112,7 +109,7 @@
 @section('scripts')
   <script>
     function performDestroy(id , referance){
-      let url = '/cms/product/admins/'+id;
+      let url = '/cms/product/companies/'+id;
       confirmDestroy(url , referance );
     }
 </script>

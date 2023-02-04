@@ -339,6 +339,34 @@
             </ul>
           </li>
 
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="fas fa-id-card"></i>
+                                              {{-- <i class="far fa-user"></i> --}}
+              <p>
+                company
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('companies.index')}}" class="nav-link">
+                  <i class="fas fa-list-ul nav-icon"></i>
+                  {{-- <i class="fas fa-list-ul"></i> --}}
+                  <p>Index</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('companies.create')}}" class="nav-link">
+                  {{-- <i class="fas fa-plus nav-icon"></i> --}}
+                  <i class="fa-sharp fa-solid fa-folder-plus"></i>
+                  {{-- <i class="fas fa-plus"></i> --}}
+                  <p>Create</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
 
 
            <li class="nav-item">

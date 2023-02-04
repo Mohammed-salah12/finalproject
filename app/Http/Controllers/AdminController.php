@@ -60,13 +60,19 @@ class AdminController extends Controller
 
     $IsSaved=$admins->save();
     if($IsSaved){
-        $users=new User();
-        $users->first_name=$request->get('first_name');
-        $users->last_name=$request->get('last_name');
-        $users->mobile=$request->get('mobile');
-        $users->actor()->associate($admins);
 
+<<<<<<< HEAD
         $IsSavedUser=$users->save();
+=======
+        return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
+
+    }
+    else{
+        return response()->json(['icon' => 'error' , 'title' => $valedetor->getMessageBag()->first()] ,400);
+
+    }
+   }
+>>>>>>> e1db42da570904ab75d95ef21767d96c47a68e37
 
 
         if($IsSavedUser){
@@ -126,17 +132,13 @@ class AdminController extends Controller
             $isSaved = $admins->save();
 
             if($isSaved){
-                $admins = $admins->user;
 
-
-                $admins->first_name = $request->get('first_name');
-                $admins->last_name = $request->get('last_name');
-                $admins->mobile = $request->get('mobile');
-                $admins->actor()->associate($admins);
-
-                $isSaved = $admins->save();
 
                 return ['redirect'=>route('admins.index')];
+
+
+
+
 
             }
         }
@@ -155,7 +157,37 @@ class AdminController extends Controller
     {
         $admins = Admin::destroy($id);
       }
-}
+
+      public function showregester()
+      {
+          $admins=Admin::all();
+          return response()->view('cms.regester',compact('admins'));
+      }
+
+      public function regester(Request $request)
+      {
+     $valedetor=validator(request()->all([
+      'email'=>'required|email'
+     ]));
+
+     if(! $valedetor->fails() ){
+      $admins= new Admin();
+      $admins->email=$request->get('email');
+      $admins->password=Hash::make($request->get('password'));
+      $IsSaved=$admins->save();
+    if($IsSaved){
+        return response()->json(['icon'=>'succsess','title'=>'created is succsessfully'], 200);
+
+    }
+    else{
+        return response()->json(['icon' => 'error' , 'title' => $valedetor->getMessageBag()->first()] ,400);
+
+    }
+      }
+      }
+
+     }
+
 
 
 
